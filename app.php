@@ -1,7 +1,6 @@
 <?php
-$id = file_get_contents('userid.txt');
-$justid = explode("\n",$id,2);
-$url_req = "http://api.stackoverflow.com/1.1/users/$justid[0]/favorites";
+$id = trim(file_get_contents('userid.txt'));
+$url_req = "https://api.stackexchange.com/2.2/users/{$id}/favorites?order=desc&sort=added&site=stackoverflow";
 
 $query = trim($argv[1]);
 
@@ -13,10 +12,14 @@ $resp = curl_exec($curl);
 curl_close($curl);
 
 $data = json_decode($resp, true);
-$xml = "<?xml version=\"1.0\"?>\n<items>\n";
 
-foreach ($data["questions"] as $question){
-  $url = $question["question_comments_url"];
+$xml = <<<'EOD'
+  <?xml version="1.0"?>
+  <items>
+EOD;
+
+foreach ($data["items"] as $question){
+  $url = $question["link"];
   $title = $question["title"];
   $tags = $question["tags"];
   $tag_list = implode(",", $tags);
@@ -24,9 +27,9 @@ foreach ($data["questions"] as $question){
   $query_matched = stripos($term_list, $query);
 
   if ( !($query_matched === false) ){
-    $xml .= "<item arg=\"http://stackoverflow.com$url\">\n";
+    $xml .= "<item arg=\"$url\">\n";
     $xml .= "<title>$title</title>\n";
-    $xml .= "<subtitle>http://stackoverflow.com$url</subtitle>\n";
+    $xml .= "<subtitle>$url</subtitle>\n";
     $xml .= "<icon>icon.png</icon>\n";
     $xml .= "</item>\n";
   }
@@ -34,4 +37,3 @@ foreach ($data["questions"] as $question){
 
 $xml .="</items>";
 echo $xml;
-

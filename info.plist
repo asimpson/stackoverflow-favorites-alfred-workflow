@@ -6,6 +6,17 @@
 	<string>com.adamsimpson.sof</string>
 	<key>connections</key>
 	<dict>
+		<key>0FDD3155-FA7B-47A4-B6C5-F382DC717DBB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D279BEBC-2949-466B-BE27-9F5499BC8EE4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>26B17CDB-CE46-4049-8562-EB0DAC85D937</key>
 		<array/>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
@@ -91,6 +102,31 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>ID Set</string>
+				<key>title</key>
+				<string>StackOverflow Favorites</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>D279BEBC-2949-466B-BE27-9F5499BC8EE4</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
@@ -150,6 +186,11 @@
 		<dict>
 			<key>ypos</key>
 			<real>170</real>
+		</dict>
+		<key>D279BEBC-2949-466B-BE27-9F5499BC8EE4</key>
+		<dict>
+			<key>ypos</key>
+			<real>100</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
